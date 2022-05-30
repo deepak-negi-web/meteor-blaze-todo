@@ -2,7 +2,6 @@ import React from "react";
 import { Trash } from "../icons";
 
 export const ProjectList = ({ projects, selectedProject, userId }) => {
-  console.log("userId", userId);
   return (
     <ul className="project_list">
       {!!projects.length ? (

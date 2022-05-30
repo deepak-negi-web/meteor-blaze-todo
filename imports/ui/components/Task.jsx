@@ -4,15 +4,14 @@ export const Task = ({ task, onClick, onDeleteClick, isOwner }) => {
   return (
     <li className="task__item">
       <label className="form-control">
-        {isOwner && (
-          <input
-            className="task__item_checkbox"
-            type="checkbox"
-            checked={!!task.isChecked}
-            onClick={() => onClick(task)}
-            readOnly
-          />
-        )}
+        <input
+          className="task__item_checkbox"
+          type="checkbox"
+          checked={!!task.isChecked}
+          onClick={() => onClick(task)}
+          readOnly
+          disabled={!isOwner}
+        />
         <span className="task__item_text">{task.text}</span>
       </label>
       {isOwner && (
