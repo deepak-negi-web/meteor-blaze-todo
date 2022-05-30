@@ -1,0 +1,324 @@
+:root {
+  --form-control-color: rebeccapurple;
+  --form-control-disabled: #959495;
+}
+
+body {
+  background-color: #ffeaa7;
+  min-height: 70vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  color: #494a4b;
+  font-family: "Architects Daughter", cursive;
+  font-size: 130%;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdcb6e;
+  padding: 0 12rem;
+  box-sizing: border-box;
+  height: 64px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.main_container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  padding-top: 64px;
+}
+
+.task_container {
+  width: 100%;
+  height: 540px;
+  min-height: 500px;
+  max-height: 540px;
+  width: 480px;
+  max-width: 500px;
+  min-width: 250px;
+  background: #f1f5f8;
+  background-image: radial-gradient(#bfc0c1 6.2%, transparent 0);
+  background-size: 25px 25px;
+  border-radius: 20px;
+  box-shadow: 4px 3px 7px 2px #00000040;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  height: 50px;
+}
+.heading h1 {
+  transform: rotate(2deg);
+  padding: 0.2rem 1.2rem;
+  border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
+  background-color: #fdcb6e;
+  font-size: 1.5rem;
+}
+
+.task_form,
+.project_form {
+  margin-bottom: 1rem;
+  height: 50px;
+}
+
+.task_input,
+.project_input {
+  box-sizing: border-box;
+  background-color: transparent;
+  padding: 0.7rem;
+  border-bottom-right-radius: 15px 3px;
+  border-bottom-left-radius: 3px 15px;
+  border: solid 3px transparent;
+  border-bottom: dashed 3px #fdcb6e;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1rem;
+  color: hsla(260, 2%, 25%, 0.7);
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.add_button {
+  padding: 0;
+  border: none;
+  font-family: "Architects Daughter", cursive;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  background-color: #ffeaa7;
+  margin-left: 1rem;
+}
+.add_button_span {
+  background: #f1f5f8;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 2px solid hsl(198, 1%, 29%);
+}
+
+.project_list {
+  list-style: inside;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.project_item_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+.project_item {
+  margin: 0.5rem;
+}
+.project_item:hover {
+  color: #764af1;
+  cursor: pointer;
+}
+.active_project {
+  color: #764af1;
+  font-weight: 700;
+}
+
+.task__list {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  height: calc(100% - 180px);
+  overflow-y: auto;
+}
+
+.task__list h4 {
+  text-align: center;
+}
+
+.task__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.task__item_input {
+  background-color: transparent;
+  padding: 0.7rem;
+  border-bottom-right-radius: 15px 3px;
+  border-bottom-left-radius: 3px 15px;
+  border: solid 3px transparent;
+  border-bottom: dashed 3px #fdcb6e;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1rem;
+  color: hsla(260, 2%, 25%, 0.7);
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.task__item_text {
+  font-family: "Architects Daughter", cursive;
+  font-size: 1.2rem;
+  color: hsla(260, 2%, 25%, 0.7);
+  text-align: left;
+  max-width: 320px;
+}
+
+.task__item_edit,
+.task__item_edit_disabled {
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.task__item_edit_disabled {
+  cursor: not-allowed;
+}
+
+.task__item_edit svg:hover {
+  stroke: #764af1;
+}
+.task__item_edit_disabled svg {
+  stroke: #959495;
+}
+
+.task__item_cancel,
+.project_item_cancel {
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.task__item_cancel svg:hover,
+.project_item_cancel svg:hover {
+  stroke: #eb5353;
+}
+
+.form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+.task__item_checkbox {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 22px;
+  height: 22px;
+  border: 0.08em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+.task__item_checkbox::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: CanvasText;
+}
+
+.task__item_checkbox:checked::before {
+  transform: scale(1);
+}
+
+.task__item_checkbox:checked + .task__item_text {
+  text-decoration: line-through;
+}
+
+.task__item_checkbox:focus {
+  outline: max(2px, 0.08em) solid currentColor;
+  outline-offset: max(2px, 0.08em);
+}
+
+.task__item_checkbox:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+}
+
+.filter > button {
+  background-color: #62807e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+.filter > button:hover {
+  background-color: #7f9ca0;
+}
+
+.footer__note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 8px;
+  width: calc(100% - 2rem);
+  font-size: 14px;
+}
+
+@media screen and (max-width: 769px) {
+  .navBar {
+    padding: 1rem;
+  }
+  .main_container {
+    width: 100%;
+    flex-direction: column;
+  }
+  .task_container {
+    width: 100%;
+  }
+  .form-control {
+    width: 240px;
+  }
+}

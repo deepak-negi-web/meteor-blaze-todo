@@ -1,0 +1,69 @@
+<body>
+  <header class="navBar">
+    <h2>Jot~It</h2>
+    {{> loginButtons}}
+  </header>
+  <div class="main_container">
+    <!-- {{#unless currentUser}}
+    <div>
+      <h1>Login/Signup to get started</h1>
+    </div>
+    {{/unless}} -->
+    <div class="project_container">
+      <header class="heading">
+        <h1>Projects</h1>
+      </header>
+
+      <div>
+        {{> projectTemp projects=projects selectedProject=selectedProject
+        userId=currentUser._id}}
+      </div>
+
+      {{#if currentUser}}
+      <form class="project_form">
+        <input
+          type="text"
+          name="projectName"
+          class="project_input"
+          placeholder="Enter Projects"
+        />
+      </form>
+      {{/if}}
+    </div>
+
+    {{#if selectedProject}}
+    <div class="task_container">
+      <div class="heading">
+        <h1>{{selectedProject.name}}</h1>
+      </div>
+      {{#if currentUser}}
+      <form class="task_form">
+        <input
+          type="text"
+          class="task_input"
+          name="taskText"
+          placeholder="Add Task to list"
+        />
+        <button class="add_button" type="submit">
+          <span class="add_button_span"> Add </span>
+        </button>
+      </form>
+      {{/if}}
+      <div>
+        {{> taskTemp selectedProject=selectedProject userId=currentUser._id}}
+      </div>
+
+      <footer class="footer__note">
+        <span
+          >{{selectedProject.pendingTask.count}}
+          {{selectedProject.pendingTask.text}} Pending</span
+        >
+        <span
+          >{{selectedProject.completedTask.count}}
+          {{selectedProject.completedTask.text}} Completed</span
+        >
+      </footer>
+    </div>
+    {{/if}}
+  </div>
+</body>
