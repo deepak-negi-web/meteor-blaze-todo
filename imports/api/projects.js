@@ -8,7 +8,7 @@ if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish("projects", function projectsPublication() {
     return Projects.find({
-      $or: [{ private: { $ne: true } }, { owner: this.userId }],
+      $or: [{ isPrivate: { $ne: true } }, { owner: this.userId }],
     });
   });
 }
@@ -29,6 +29,7 @@ Meteor.methods({
       createdAt: new Date(),
       updatedAt: new Date(),
       tasks: [],
+      isPrivate: false,
     });
     return insertedProjectId;
   },
@@ -118,5 +119,20 @@ Meteor.methods({
         },
       }
     );
+  },
+  "projects.setIsPrivate"(project) {
+    check(project, Object);
+    if (!this.userId) {
+      throw new Meteor.Error("not-authorized");
+    }
+    if (this.userId !== project.owner) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Projects.update(project._id, {
+      $set: {
+        isPrivate: !project.isPrivate || false,
+      },
+    });
   },
 });

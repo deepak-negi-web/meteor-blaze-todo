@@ -5,7 +5,6 @@ import "./task.js";
 import "./project.js";
 import "./body.html";
 import { Projects } from "../api/projects";
-import { ProjectList, TaskList } from "./components";
 
 const LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY = "project.selectedProjectId";
 
