@@ -17,6 +17,17 @@ export const ProjectList = ({ projects, selectedProject, userId }) => {
       {!!projects.length ? (
         projects.map((project) => (
           <div className="project_item_wrap">
+            <small>{!!project.isPrivate ? "Private" : "Public"}</small>
+            <label class="switch">
+              <input
+                id="toggle"
+                type="checkbox"
+                checked={!!project.isPrivate}
+                onChange={() => makeProjectPrivate(project)}
+                readOnly
+              />
+              <span class="slider round"></span>
+            </label>
             <li
               className={
                 selectedProject && selectedProject._id === project._id
@@ -30,16 +41,6 @@ export const ProjectList = ({ projects, selectedProject, userId }) => {
             </li>
             {project.owner === userId && (
               <>
-                <label class="switch">
-                  <input
-                    id="toggle"
-                    type="checkbox"
-                    checked={!!project.isPrivate}
-                    onChange={() => makeProjectPrivate(project)}
-                    readOnly
-                  />
-                  <span class="slider round"></span>
-                </label>
                 <span
                   className="project_item_cancel"
                   data-projectid={project._id}
